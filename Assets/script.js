@@ -4,12 +4,14 @@
 var pwLength = prompt(
   "How long would you like your password to be? Choose between 8 characters min and 128 characters max"
 );
-// alerts user to input min of 8 characters
-if (pwLength < 8) {
-  alert("Please choose a number greater than 8");
-  // alerts usert to input max of 128 characters
-} else if (pwLength > 128) {
-  alert("Please choose a number less than 128");
+// alerts user to choose a password length between 8 and 128
+if (pwLength < 8 || pwLength > 128) {
+  alert("Please choose a number between 8 and 128");
+  // alerts user if input is not a numeric value
+} else if (pwLength !== NaN) {
+  alert("Please input only numbers.");
+} else {
+  console.log("dude");
 }
 
 var lower = confirm("Would you like lower case characters?");
@@ -30,10 +32,96 @@ var specChar = confirm("Would you like to use any special characters?");
   console.log(specChar);
 }
 // make these each separate variable arrays
-var lowChar = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-  upChar = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-  num = [0,1,2,3,4,5,6,7,8,9];
-  specChar = [];
+var lowChar = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+upChar = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+specChar = [
+  "!",
+  "#",
+  "$",
+  "%",
+  "&",
+  "'",
+  "(",
+  ")",
+  "*",
+  "+",
+  ",",
+  "-",
+  ".",
+  "/",
+  ":",
+  ";",
+  "<",
+  "=",
+  ">",
+  "?",
+  "@",
+  "[",
+  "\\",
+  "]",
+  "^",
+  "_",
+  "`",
+  "{",
+  "|",
+  "}",
+  "~",
+];
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -45,11 +133,10 @@ function writePassword() {
 
   passwordText.value = password;
 }
-
+// This is calling the function writePassword
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 // !--Begin pseudocode
 // User requests a password to be generated(clicks Generate Password button)
 // How long ?
