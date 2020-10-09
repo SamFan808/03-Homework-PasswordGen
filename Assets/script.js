@@ -1,17 +1,39 @@
 // Defining variables
 
-var pwLength;
-var lower;
-var upper;
-var num;
-var specChar;
+// variable pwLength stores user choice for password length into global memory
+var pwLength = prompt(
+  "How long would you like your password to be? Choose between 8 characters min and 128 characters max"
+);
+// alerts user to input min of 8 characters
+if (pwLength < 8) {
+  alert("Please choose a number greater than 8");
+  // alerts usert to input max of 128 characters
+} else if (pwLength > 128) {
+  alert("Please choose a number less than 128");
+}
 
-var characters = {
-  lower: "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,",
-  upper: "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z",
-  num: "0,1,2,3,4,5,6,7,8,9",
-  specChar: "",
-};
+var lower = confirm("Would you like lower case characters?");
+{
+  console.log(lower);
+}
+
+var upper = confirm("Would you like uppercase characters?");
+{
+  console.log(upper);
+}
+var num = confirm("Would you like numbers?");
+{
+  console.log(num);
+}
+var specChar = confirm("Would you like to use any special characters?");
+{
+  console.log(specChar);
+}
+// make these each separate variable arrays
+var lowChar = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  upChar = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  num = [0,1,2,3,4,5,6,7,8,9];
+  specChar = [];
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
