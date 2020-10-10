@@ -1,38 +1,59 @@
 // Defining variables
 
+
 // variable pwLength stores user choice for password length into global memory
-var pwLength = prompt(
-  "How long would you like your password to be? Choose between 8 characters min and 128 characters max"
-);
-// alerts user to choose a password length between 8 and 128
-if (pwLength < 8 || pwLength > 128) {
-  alert("Please choose a number between 8 and 128");
-  // alerts user if input is not a numeric value
-} else if (pwLength !== NaN) {
-  alert("Please input only numbers.");
-} else {
-  console.log("dude");
+function start() {
+  var pwLength = prompt("How long would you like your password to be? Choose between 8 characters min and 128 characters max");
+
+  // alerts user to choose a password length between 8 and 128
+    if (pwLength === null) {
+      return;}  
+  
+    if (pwLength < 8 || pwLength > 128) {
+    alert("Please choose a number between 8 and 128");
+    return start();
+
+     // alerts user if input is not a numeric value
+    } else if (isNaN(pwLength)) {
+    alert("Please input only numbers.");
+    return start();
+
+    } else {
+    console.log("dude");
+    }
 }
 
-var lower = confirm("Would you like lower case characters?");
-{
-  console.log(lower);
-}
+// how can user decide to exit out if they don't want to keep going?
+// passGroup needs to be only pwLength #s long, how to do that? passGroup.length === pwLength
+// passGroup.push needs to push a random number of only the specified groups of chars into the group
 
-var upper = confirm("Would you like uppercase characters?");
-{
-  console.log(upper);
-}
-var num = confirm("Would you like numbers?");
-{
-  console.log(num);
-}
-var specChar = confirm("Would you like to use any special characters?");
-{
-  console.log(specChar);
-}
+function charSelect() {
+  var passGroup =[];
+  var lowerQ = confirm("Would you like lower case characters?");
+    if (lowerQ === true) {
+      passGroup.push(lowChar)
+    }
+  var upperQ = confirm("Would you like uppercase characters?");
+    if (upperQ === true) {
+      passGroup.push(upChar)
+   }
+  var numQ = confirm("Would you like numbers?");
+    if (numQ === true) {
+      passGroup.push(num)
+    }
+  var specQ = confirm("Would you like to use any special characters?");
+    if (specQ === true) {
+      passGroup.push(specChar)
+    }
+    
+    if (lowerQ === false &&
+        upperQ ===false &&
+        numQ === false &&
+        specQ === false) {
+      alert("You must select at least one of the character types.");
+      return charSelect();}   
 // make these each separate variable arrays
-var lowChar = [
+  var lowChar = [
   "a",
   "b",
   "c",
@@ -59,8 +80,8 @@ var lowChar = [
   "x",
   "y",
   "z",
-];
-upChar = [
+  ];
+  var upChar = [
   "A",
   "B",
   "C",
@@ -87,9 +108,9 @@ upChar = [
   "X",
   "Y",
   "Z",
-];
-num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-specChar = [
+  ];
+  var num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var specChar = [
   "!",
   "#",
   "$",
@@ -121,7 +142,15 @@ specChar = [
   "|",
   "}",
   "~",
-];
+  ];
+}
+
+// var result =""
+
+// for (var i = 0; i < pwLength; i++) {
+//     var password = passGroup[Math.floor(Math.random() * passGroup.length)];
+//     result = result += password[i]
+// }
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -133,23 +162,41 @@ function writePassword() {
 
   passwordText.value = password;
 }
+
+// placeholder
+function generatePassword() {
+  return ("¯\\_(ツ)_/¯");
+}
+
+// function to run through the character arrays in a for loop
+// function passChars(arr) {
+//   for (var i = 0; i > pwLength; i++);
+//   console.log(passGroup);
+// }
+
 // This is calling the function writePassword
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// !--Begin pseudocode
+start (); 
+charSelect();
+
+// !--Begin pseudocode ==================================================================
 // User requests a password to be generated(clicks Generate Password button)
+
 // How long ?
 //   Prompt user for length of password
 //     Min 8 chars
 // Max 128 chars
+// Stores value of # of chars to a variable
+
 // Which characters to include ?
-//   Lowercase
-//   Uppercase
-//   Numbers - will need whole numbers - Math.Floor and Math.Random
-//    Special Characters - will we need to place special characters in an Array ?
-// Answers each prompt
-// answers are stored in variables
+//   Lowercase --> selects random Lowercase letters and fills passGroup array
+//   Uppercase -> selects random Uppercase letters and adds to passGroup array, displaces random # of prev chars
+//   Numbers - will need whole numbers - Math.Floor and Math.Random --> selects random Numbers and adds to passGroup array, displaces random # of prev chars
+//    Special Characters - will we need to place special characters in an Array ? --> selects random Special Characters and to passGroup array, displaces random # of prev chars
+
+// Values for each set of characters are stored in variables (arrays)
 // each prompt is evaluated and validated
 // password generated with the validated criteria
 
