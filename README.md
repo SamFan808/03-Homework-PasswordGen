@@ -9,6 +9,6 @@ Given starter js file and completed html and css files.
 
 [Link to HW 3](https://samfan808.github.io/03-Homework-PasswordGen/)
 
-Screenshots below:
+Screenshot below:
 
 <img src="./Assets/hw3_screenshot.png" alt="Password Generator screenshot">
