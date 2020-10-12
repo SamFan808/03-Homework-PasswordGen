@@ -11,4 +11,4 @@ Given starter js file and completed html and css files.
 
 Screenshots below:
 
-![HW screenshot] (image.png)
+![HW screenshot] (Assets/hw3_screenshot.png)
