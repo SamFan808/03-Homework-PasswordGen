@@ -109,8 +109,6 @@ function generatePassword() {
     } else if (isNaN(userInput)) {
       alert("Please input only numbers.");
       return generatePassword();
-    } else {
-    console.log(userInput);
     }
     var lowerQ = confirm("Would you like lower case characters?");
       if (lowerQ) {
@@ -135,8 +133,6 @@ function generatePassword() {
       alert("You must select at least one of the character types.");
       return generatePassword();
     }   
-      console.log(lowerQ, upperQ, numQ, specQ);
-      console.log(passGroup);
   //for loop cycles through the passGroup array the number of times as specified by userInput,
   //selecting a random character each time from the passGroup array
     var result = "";
@@ -146,7 +142,6 @@ function generatePassword() {
       var passRando = passGroup[passRes];
       result = result + passRando;
     }
-    console.log(result);
     return result;
 }
 // Write password to the #password input  
